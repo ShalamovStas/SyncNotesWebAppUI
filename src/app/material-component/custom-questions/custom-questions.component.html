@@ -1,0 +1,249 @@
+
+
+<mat-card>
+	<mat-card-content>
+		<mat-card-title>Custom question builder</mat-card-title>
+		<mat-card-subtitle>Build your custom question </mat-card-subtitle>
+
+
+		<div fxLayout="row wrap">
+			<!-- column -->
+			<div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+				<mat-card>
+					<div class="p-20 bg-info position-relative">
+						<h4 class="card-title text-white m-0">Questions</h4>
+						<h6 class="card-subtitle text-white m-0 op-5">Drag n drop question list</h6>
+						<button mat-mini-fab color="accent" class="add-contact"
+							(click)="AddNewQuestionDialog()">+</button>
+					</div>
+					<mat-card-content>
+						<div class="d-flex flex-wrap">
+							<div>
+							</div>
+							<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+
+								<div class="c-question-droplist-flex" *ngFor="let question of questions" cdkDrag>
+									<div class="d-flex flex-direction--column">
+										<div class="c-question-droplist--column question-text--wrab parent">
+											<div class="question-attributes--wrap" [ngSwitch]="question.questionType">
+												<h6 *ngSwitchCase="1" class="text-success m-0"><i
+														class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													True/False question
+												</h6>
+												<h6 *ngSwitchCase="2" class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Input question
+												</h6>
+											</div>
+											<div class="question-attributes--wrap">
+												<h6 *ngIf="question.questionType != 2" class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Positive points: {{question.pointsPositive}}
+												</h6>
+												<h6 *ngIf="question.questionType != 2" class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Negative points: {{question.pointsNegative}}
+												</h6>
+
+												<h6 *ngIf="question.questionType == 2" class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Points: {{question.pointsPositive}}
+												</h6>
+											</div>
+											<span>{{question.text}}</span>
+										</div>
+										<div *ngIf="question.childQuestion"
+											class="c-question-droplist--column question-text--wrab child">
+											<div class="question-attributes--wrap"
+												[ngSwitch]="question.childQuestion.questionType">
+												<h6 *ngSwitchCase="1" class="text-success m-0"><i
+														class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>True/False
+												</h6>
+
+												<h6 *ngSwitchCase="2" class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>Input
+												</h6>
+											</div>
+
+											<div class="question-attributes--wrap"
+												*ngIf="question.childQuestion.questionTrueFalseStrategy !== undefined"
+												[ngSwitch]="question.childQuestion.questionTrueFalseStrategy">
+												<h6 *ngSwitchCase="0" class="text-danger m-0"><i
+														class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Strateqy not specified
+												</h6>
+												<h6 *ngSwitchCase="1" class="text-inverse m-0"><i
+														class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													<strong>Skip</strong> if previous answer is true
+												</h6>
+
+												<h6 *ngSwitchCase="2" class="text-inverse m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													<strong>Show</strong> if previous answer is true
+												</h6>
+											</div>
+
+											<div class="question-attributes--wrap">
+												<h6 class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Positive points: {{question.childQuestion.pointsPositive}}
+												</h6>
+												<h6 class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Negative points: {{question.childQuestion.pointsNegative}}
+												</h6>
+											</div>
+											<span>{{question.childQuestion.text}}</span>
+										</div>
+									</div>
+									<div class="c-question-droplist--column c-question-droplist--column-menu-wrap">
+
+										<button mat-icon-button [matMenuTriggerFor]="menu4">
+											<mat-icon>more_vert</mat-icon>
+										</button>
+										<mat-menu #menu4="matMenu">
+											<button mat-menu-item (click)="editCard(question.id)">
+												<mat-icon>edit</mat-icon>
+												<span>Edit question</span>
+											</button>
+											<button *ngIf="!question.childQuestion" mat-menu-item
+												(click)="addChildQuestion(question.id)">
+												<mat-icon>add</mat-icon>
+												<span>Add child question</span>
+											</button>
+											<button *ngIf="question.childQuestion" mat-menu-item
+												(click)="editChildQuestion(question.id)">
+												<mat-icon>edit</mat-icon>
+												<span>Edit child question</span>
+											</button>
+											<button *ngIf="question.childQuestion" mat-menu-item
+												(click)="openDialog(question.id)">
+												<mat-icon>policy</mat-icon>
+												<span>Strategy</span>
+											</button>
+											<button mat-menu-item (click)="deleteQuestion(question.id)">
+												<mat-icon>delete_sweep</mat-icon>
+												<span>Delete</span>
+											</button>
+										</mat-menu>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+
+			<!-- Results -->
+			<div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+
+				<mat-card>
+					<div class="p-20 bg-info position-relative">
+						<h4 class="card-title text-white m-0">Results</h4>
+						<h6 class="card-subtitle text-white m-0 op-5">Add results</h6>
+						<button mat-mini-fab color="accent" class="add-contact" (click)="addResult()">+</button>
+					</div>
+					<mat-card-content>
+						<div class="d-flex flex-wrap">
+							<div>
+							</div>
+							<div cdkDropList class="example-list" (cdkDropListDropped)="dropTestResult($event)">
+
+								<div class="c-question-droplist-flex" *ngFor="let testResultModel of testResultModels"
+									cdkDrag>
+									<div class="d-flex flex-direction--column">
+										<div class="c-question-droplist--column question-text--wrab parent">
+											<div class="question-attributes--wrap">
+												<h6 class="text-info m-0">
+													<i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>
+													Result points: {{testResultModel.points}}
+												</h6>
+											</div>
+											<span>{{testResultModel.message}}</span>
+										</div>
+									</div>
+									<div class="c-question-droplist--column c-question-droplist--column-menu-wrap">
+
+										<button mat-icon-button [matMenuTriggerFor]="menu4">
+											<mat-icon>more_vert</mat-icon>
+										</button>
+										<mat-menu #menu4="matMenu">
+											<button mat-menu-item (click)="editTestResultModel(testResultModel.id)">
+												<mat-icon>edit</mat-icon>
+												<span>Edit</span>
+											</button>
+											<button mat-menu-item (click)="deleteTestResultModel(testResultModel.id)">
+												<mat-icon>delete_sweep</mat-icon>
+												<span>Delete</span>
+											</button>
+										</mat-menu>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>
+
+<div style="display: flex; place-content: center;">
+
+	<mat-card fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100" class="oh text-center little-profile">
+		<mat-card-content>
+
+			<h3 class="m-b-0">Quiz</h3>
+			<h6 class="m-t-0 " *ngIf="questionWizardEngine.state == 'STARTED'">Quiz started</h6>
+			<h6 class="m-t-0 " *ngIf="questionWizardEngine.state == 'FINISHED'">Quiz finished</h6>
+			<mat-card-actions>
+				<button mat-raised-button color="primary" (click)="startQuiz()">Start quiz</button>
+			</mat-card-actions>
+			<div fxLayout="row" fxLayoutWrap="wrap" class="m-t-30">
+				<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="33.33%" fxFlex="100">
+					<h3 class="m-0 font-light">{{questionWizardEngine.questions.length}}</h3>
+					<small>Questions</small>
+				</div>
+				<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="33.33%" fxFlex="100">
+					<h3 class="m-0 font-light">{{questionWizardEngine.currentIndex + 1}}</h3>
+					<small>Current position</small>
+				</div>
+				<div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="33.33%" fxFlex="100">
+					<h3 class="m-0 font-light">{{questionWizardEngine.currentPoints}}</h3>
+					<small>Current points</small>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+
+	<mat-card fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+		<mat-card-content>
+			<mat-card-title>Quiz</mat-card-title>
+			<div *ngIf="questionWizardEngine.state == 'STARTED'" class="question-wrap">
+				<p>
+					{{questionWizardEngine.currentQuestion.text}}
+				</p>
+				<div *ngIf="questionWizardEngine.currentQuestion.questionType == 1"
+					class="question-answer-button--wrap">
+					<button mat-raised-button color="primary" (click)="trueFalseAnswer(true)">Yes</button>
+					<button mat-raised-button color="primary" (click)="trueFalseAnswer(false)">No</button>
+				</div>
+				<div *ngIf="questionWizardEngine.currentQuestion.questionType == 2">
+					<button mat-raised-button color="primary" (click)="inputAnswer(1)">Next</button>
+				</div>
+			</div>
+
+			<div *ngIf="questionWizardEngine.state == 'FINISHED'" class="question-wrap">
+				<p>
+					{{questionWizardEngine.currentTestResult.message}}
+				</p>
+				<p>
+					Points: {{questionWizardEngine.currentTestResult.points}}
+				</p>
+
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>
