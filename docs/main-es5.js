@@ -244,7 +244,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       providers: [{
         provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__["LocationStrategy"],
-        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["PathLocationStrategy"]
+        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["HashLocationStrategy"]
       }],
       imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__["BrowserAnimationsModule"], _demo_material_module__WEBPACK_IMPORTED_MODULE_13__["DemoMaterialModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_14__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_app_routing__WEBPACK_IMPORTED_MODULE_6__["AppRoutes"])]]
     });
@@ -266,7 +266,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__["BrowserAnimationsModule"], _demo_material_module__WEBPACK_IMPORTED_MODULE_13__["DemoMaterialModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_8__["FlexLayoutModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_14__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_app_routing__WEBPACK_IMPORTED_MODULE_6__["AppRoutes"])],
           providers: [{
             provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__["LocationStrategy"],
-            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["PathLocationStrategy"]
+            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["HashLocationStrategy"]
           }],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         }]
@@ -1931,7 +1931,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\src\main.ts */
+    /*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\src\main.ts */
     "./src/main.ts");
     /***/
   }

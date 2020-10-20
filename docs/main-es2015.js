@@ -110,7 +110,7 @@ AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
         {
             provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__["LocationStrategy"],
-            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["PathLocationStrategy"]
+            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["HashLocationStrategy"]
         }
     ], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -156,7 +156,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                 providers: [
                     {
                         provide: _angular_common__WEBPACK_IMPORTED_MODULE_5__["LocationStrategy"],
-                        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["PathLocationStrategy"]
+                        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_5__["HashLocationStrategy"]
                     }
                 ],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -1101,7 +1101,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -587,15 +587,15 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\node_modules\chartist\dist\chartist.css */
+    /*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\node_modules\chartist\dist\chartist.css */
     "./node_modules/chartist/dist/chartist.css");
 
     __webpack_require__(
-    /*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\src\styles.css */
+    /*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\src\styles.css */
     "./src/styles.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\src\assets\styles\style.scss */
+    /*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\src\assets\styles\style.scss */
     "./src/assets/styles/style.scss");
     /***/
   }

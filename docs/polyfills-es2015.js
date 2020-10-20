@@ -3037,7 +3037,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\shala\source\repos\Download projects\material-pro-angular-lite-master\angular-10\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! C:\Users\shala\Documents\GitHub\SyncNotesWebAppUI\src\polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })
